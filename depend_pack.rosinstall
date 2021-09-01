@@ -1,6 +1,4 @@
 - git:
    local-name: irp_sen_msgs
    uri: https://github.com/irapkaist/irp_sen_msgs.git
-   local-name: novatel_gps_msgs
-   url: https://github.com/swri-robotics/novatel_gps_driver/tree/master/novatel_gps_msgs.git
 
