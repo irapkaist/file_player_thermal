@@ -35,5 +35,5 @@ $roslaunch file_player file_player.launch
 4. The Stop skip button skips data while the vehicle is stationary for convenience.
 5. The loop button resumes when playback is finished.
 
-##5. Contributors
+## 5. Contributors
 * Jinyong Jeong: The original author
