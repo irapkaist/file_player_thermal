@@ -11,6 +11,7 @@ $cd ~/catkin_ws/src
 $wstool init
 $wstool merge file_player/depend_pack.rosinstall
 $wstool update
+$bash depend_package.sh
 ```
 
 ## 2. Build workspace
