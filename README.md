@@ -1,17 +1,14 @@
-# File player for Stereo Thermal Dataset
+# File player for complex urban data set
 
-Maintainer: Seungsang Yun (seungsang@kaist.ac.kr)
+Maintainer: Jinyong Jeong (jjy0923@kaist.ac.kr)
 
 This program is a file player for the complex urban data set. If a user installs the ROS using "Desktop-Full version", there is only one additional dependent package, except for the ROS default package. First, clone this package into the src folder of your desired ROS workspace.
 
 ## 1. Obtain dependent package (defined msg)
 
 ```
-$cd ~/catkin_ws/src
-$wstool init
-$wstool merge file_player/depend_pack.rosinstall
-$wstool update
-$bash depend_package.sh
+$cd ~/catkin_ws/src/file_player_thermal
+$bash install_depend_package.sh
 ```
 
 ## 2. Build workspace
@@ -35,6 +32,3 @@ $roslaunch file_player file_player.launch
 3. The player button starts publishing data in the ROS message.
 4. The Stop skip button skips data while the vehicle is stationary for convenience.
 5. The loop button resumes when playback is finished.
-
-## 5. Contributors
-* Jinyong Jeong: The original author
