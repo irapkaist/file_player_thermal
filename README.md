@@ -1,4 +1,4 @@
-# File player for complex urban data set
+# File player for stereo thermal dataset
 
 Maintainer: Seungsang Yun (seungsang@kaist.ac.kr)
 
