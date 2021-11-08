@@ -7,6 +7,11 @@ This program is a file player for the complex urban data set. If a user installs
 ## 1. Obtain dependent package (defined msg)
 
 ```
+$mkdir ~/catkin_ws
+$cd ~/catkin_ws
+$mkdir src
+$cd src
+$git clone https://github.com/irapkaist/file_player_thermal.git
 $cd ~/catkin_ws/src/file_player_thermal
 $bash install_depend_package.sh
 ```
