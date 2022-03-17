@@ -84,13 +84,13 @@ void ROSThread::ros_initialize(ros::NodeHandle &n)
 
   stereo_left_pub_ = nh_.advertise<sensor_msgs::Image>("/stereo/left/image_raw", 10);
   stereo_right_pub_ = nh_.advertise<sensor_msgs::Image>("/stereo/right/image_raw", 10);
-  stereo_thermal_14bit_left_pub_ = nh_.advertise<sensor_msgs::Image>("/thermal_14bit_left/image_raw", 10);
-  stereo_thermal_14bit_right_pub_ = nh_.advertise<sensor_msgs::Image>("/thermal_14bit_right/image_raw", 10);
+  stereo_thermal_14bit_left_pub_ = nh_.advertise<sensor_msgs::Image>("/thermal_14bit/left/image_raw", 10);
+  stereo_thermal_14bit_right_pub_ = nh_.advertise<sensor_msgs::Image>("/thermal_14bit/right/image_raw", 10);
 
   stereo_left_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/stereo/left/camera_info", 10);
   stereo_right_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/stereo/right/camera_info", 10);
-  stereo_thermal_14bit_left_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/thermal_14bit_left/camera_info", 10);
-  stereo_thermal_14bit_right_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/thermal_14bit_right/camera_info", 10);
+  stereo_thermal_14bit_left_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/thermal_14bit/left/camera_info", 10);
+  stereo_thermal_14bit_right_info_pub_ = nh_.advertise<sensor_msgs::CameraInfo>("/thermal_14bit/right/camera_info", 10);
 
   clock_pub_ = nh_.advertise<rosgraph_msgs::Clock>("/clock", 1);
 }
@@ -302,14 +302,14 @@ void ROSThread::Ready()
 
   if(left_cinfo_->validateURL(left_yaml_file_path)){
       left_cinfo_->loadCameraInfo(left_yaml_file_path);
-//      cout << "Success to load camera info" << endl;
+     cout << "Success to load camera info" << endl;
       stereo_left_info_ = left_cinfo_->getCameraInfo();
   }
 
 
   if(right_cinfo_->validateURL(right_yaml_file_path)){
       right_cinfo_->loadCameraInfo(right_yaml_file_path);
-//      cout << "Success to load camera info" << endl;
+     cout << "Success to load camera info" << endl;
       stereo_right_info_ = right_cinfo_->getCameraInfo();
   }
 
@@ -326,14 +326,14 @@ void ROSThread::Ready()
 
   if(thermal_14bit_left_cinfo_->validateURL(thermal_14bit_left_yaml_file_path)){
       thermal_14bit_left_cinfo_->loadCameraInfo(thermal_14bit_left_yaml_file_path);
-//      cout << "Success to load camera info" << endl;
+      cout << "Success to load thermal camera info" << endl;
       stereo_thermal_14bit_left_info_ = thermal_14bit_left_cinfo_->getCameraInfo();
   }
 
   if(thermal_14bit_right_cinfo_->validateURL(thermal_14bit_right_yaml_file_path)){
       thermal_14bit_right_cinfo_->loadCameraInfo(thermal_14bit_right_yaml_file_path);
-//      cout << "Success to load camera info" << endl;
-      stereo_thermal_14bit_right_info_ = right_cinfo_->getCameraInfo();
+      cout << "Success to load thermal camera info" << endl;
+      stereo_thermal_14bit_right_info_ = thermal_14bit_right_cinfo_->getCameraInfo();
   }
 
   data_stamp_thread_.active_ = true;
@@ -744,6 +744,8 @@ void ROSThread::StereoThermal14BitLeftThread()
        
         stereo_thermal_14bit_left_info_.header.stamp.fromNSec(data);
         stereo_thermal_14bit_left_info_.header.frame_id = "/stereo_thermal_14bit/left";
+
+
 
         stereo_thermal_14bit_left_pub_.publish(left_out_msg.toImageMsg());
         stereo_thermal_14bit_left_info_pub_.publish(stereo_thermal_14bit_left_info_);
